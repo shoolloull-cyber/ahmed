@@ -1,0 +1,763 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "swiper/css/effect-flip";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens to match ARCADIA brand colors */
+  --background: #0f3737; /* Solid dark green primary background */
+  --foreground: #ffffff; /* White text for readability */
+  --card: rgba(27, 95, 80, 0.3); /* Semi-transparent card background using separator color */
+  --card-foreground: #ffffff; /* White text for card content */
+  --popover: #155e4c; /* Updated to user's exact color */
+  --popover-foreground: #ffffff; /* White text for popovers */
+  --primary: #d4af37; /* Gold accent color */
+  --primary-foreground: #0f3737; /* Dark text on gold background */
+  --secondary: #155e4c; /* Updated to user's exact color */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: rgba(21, 94, 76, 0.5); /* Updated to match new color */
+  --muted-foreground: #e5e7eb; /* Light gray text on muted backgrounds */
+  --accent: #155e4c; /* Updated to user's exact color */
+  --accent-foreground: #ffffff; /* White text on accent */
+  --destructive: #e3342f; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on red */
+  --border: rgba(212, 175, 55, 0.3); /* Semi-transparent gold borders */
+  --input: rgba(21, 94, 76, 0.5); /* Updated to match new color */
+  --ring: #d4af37; /* Gold focus rings */
+  --chart-1: #0f3737;
+  --chart-2: #d4af37;
+  --chart-3: #155e4c;
+  --chart-4: #ffffff;
+  --chart-5: rgba(21, 94, 76, 0.5);
+  --radius: 0.75rem;
+  --sidebar: #0f3737;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #d4af37;
+  --sidebar-primary-foreground: #0f3737;
+  --sidebar-accent: #155e4c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(212, 175, 55, 0.3);
+  --sidebar-ring: #d4af37;
+}
+
+.dark {
+  --background: #0f3737;
+  --foreground: #ffffff;
+  --card: rgba(21, 94, 76, 0.4);
+  --card-foreground: #ffffff;
+  --popover: #155e4c;
+  --popover-foreground: #ffffff;
+  --primary: #d4af37;
+  --primary-foreground: #0f3737;
+  --secondary: #155e4c;
+  --secondary-foreground: #ffffff;
+  --muted: rgba(21, 94, 76, 0.6);
+  --muted-foreground: #e5e7eb;
+  --accent: #155e4c;
+  --accent-foreground: #ffffff;
+  --destructive: #e3342f;
+  --destructive-foreground: #ffffff;
+  --border: rgba(212, 175, 55, 0.4);
+  --input: rgba(21, 94, 76, 0.6);
+  --ring: #d4af37;
+  --chart-1: #d4af37;
+  --chart-2: #ffffff;
+  --chart-3: #155e4c;
+  --chart-4: #0f3737;
+  --chart-5: rgba(21, 94, 76, 0.6);
+  --sidebar: #0f3737;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #d4af37;
+  --sidebar-primary-foreground: #0f3737;
+  --sidebar-accent: #155e4c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(212, 175, 55, 0.4);
+  --sidebar-ring: #d4af37;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Updated geometric pattern background */
+.geometric-pattern {
+  background: #0f3737;
+  position: relative;
+}
+
+/* Added alternate background color for sections */
+.geometric-pattern-alt {
+  background: #155e4c;
+  position: relative;
+}
+
+.section-separator {
+  background: #155e4c;
+  position: relative;
+}
+
+/* Added alternate separator color */
+.section-separator-alt {
+  background: #0f3737;
+  position: relative;
+}
+
+/* Removed geometric patterns - clean solid backgrounds only */
+/* Commented out geometric pattern overlays per user request for clean backgrounds
+.geometric-pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      30deg,
+      transparent 40%,
+      rgba(212, 175, 55, 0.05) 40%,
+      rgba(212, 175, 55, 0.05) 60%,
+      transparent 60%
+    ),
+    linear-gradient(
+      -30deg,
+      transparent 40%,
+      rgba(212, 175, 55, 0.05) 40%,
+      rgba(212, 175, 55, 0.05) 60%,
+      transparent 60%
+    );
+  background-size: 80px 80px, 80px 80px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.geometric-pattern-alt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      30deg,
+      transparent 40%,
+      rgba(212, 175, 55, 0.08) 40%,
+      rgba(212, 175, 55, 0.08) 60%,
+      transparent 60%
+    ),
+    linear-gradient(
+      -30deg,
+      transparent 40%,
+      rgba(212, 175, 55, 0.08) 40%,
+      rgba(212, 175, 55, 0.08) 60%,
+      transparent 60%
+    );
+  background-size: 80px 80px, 80px 80px;
+  animation: float 20s ease-in-out infinite;
+}
+*/
+
+/* Added smooth animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-scroll-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scroll-in.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-scroll-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scroll-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-scroll-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scroll-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Enhanced card hover effects with updated colors */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.card-hover:hover::before {
+  left: 100%;
+}
+
+.card-hover:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.3);
+  border-color: rgba(212, 175, 55, 0.8);
+  background: rgba(21, 94, 76, 0.7); /* Updated to new color */
+}
+
+/* Glass morphism effect with updated colors */
+.glass-card {
+  background: rgba(21, 94, 76, 0.25); /* Updated to new color */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card:hover {
+  background: rgba(21, 94, 76, 0.35); /* Updated to new color */
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced button styles with better contrast */
+.btn-primary {
+  background: linear-gradient(135deg, #d4af37 0%, #ebc36c 100%);
+  border: none;
+  color: #0f3737 !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(235, 195, 108, 0.4);
+  color: #0f3737 !important;
+}
+
+/* Fixed language toggle button contrast */
+.language-toggle {
+  background: rgba(235, 195, 108, 0.9) !important;
+  color: #0f3737 !important;
+  border: 1px solid rgba(235, 195, 108, 0.5);
+}
+
+.language-toggle:hover {
+  background: rgba(235, 195, 108, 1) !important;
+  color: #0f3737 !important;
+  transform: scale(1.05);
+}
+
+/* Enhanced hero title with proper contrast */
+.hero-title {
+  background: linear-gradient(135deg, #d4af37 0%, #ebc36c 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(235, 195, 108, 0.5);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Added RTL support for Arabic */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .rtl\:text-right {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl\:text-left {
+  text-align: left;
+}
+
+/* Added swiper styles for gallery */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide:hover img {
+  transform: scale(1.05);
+}
+
+.swiper-pagination-bullet {
+  background: rgba(212, 175, 55, 0.5);
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #d4af37;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #d4af37;
+  background: rgba(15, 55, 55, 0.8);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(15, 55, 55, 0.9);
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: scale(1.1);
+}
+
+.swiper-flip .swiper-slide {
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.swiper-flip .swiper-slide-active,
+.swiper-flip .swiper-slide-next,
+.swiper-flip .swiper-slide-prev {
+  pointer-events: auto;
+}
+
+.swiper-flip .swiper-slide-shadow-top,
+.swiper-flip .swiper-slide-shadow-bottom,
+.swiper-flip .swiper-slide-shadow-left,
+.swiper-flip .swiper-slide-shadow-right {
+  z-index: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Adding custom swiper navigation and pagination styles for professional appearance */
+/* Custom swiper pagination bullets */
+.swiper-pagination-bullet-custom {
+  width: 12px;
+  height: 12px;
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.swiper-pagination-bullet-active-custom {
+  background: linear-gradient(135deg, #d4af37 0%, #ebc36c 100%);
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(235, 195, 108, 0.6), 0 0 30px rgba(235, 195, 108, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.swiper-pagination-bullet-custom:hover {
+  background: rgba(235, 195, 108, 0.7);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(235, 195, 108, 0.4);
+}
+
+/* Enhanced flip effect for book-like page turning */
+.swiper-flip {
+  overflow: visible;
+}
+
+.swiper-flip .swiper-slide {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.swiper-flip .swiper-slide-shadow-flip {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+}
+
+/* Enhanced book flip animation */
+.swiper-flip .swiper-slide-next {
+  transform: rotateY(-0.02deg);
+  transform-origin: left center;
+}
+
+.swiper-flip .swiper-slide-prev {
+  transform: rotateY(0.02deg);
+  transform-origin: right center;
+}
+
+/* Professional navigation button styling */
+.gallery-swiper .gallery-swiper-button-prev,
+.gallery-swiper .gallery-swiper-button-next,
+.documents-swiper .documents-swiper-button-prev,
+.documents-swiper .documents-swiper-button-next {
+  opacity: 0.8;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-swiper:hover .gallery-swiper-button-prev,
+.gallery-swiper:hover .gallery-swiper-button-next,
+.documents-swiper:hover .documents-swiper-button-prev,
+.documents-swiper:hover .documents-swiper-button-next {
+  opacity: 1;
+}
+
+/* Added container overflow prevention */
+.gallery-swiper,
+.documents-swiper {
+  overflow: hidden !important;
+  max-width: 100% !important;
+}
+
+.gallery-swiper .swiper-wrapper,
+.documents-swiper .swiper-wrapper {
+  overflow: hidden !important;
+}
+
+/* Prevent horizontal scrolling on mobile */
+@media (max-width: 768px) {
+  .gallery-swiper,
+  .documents-swiper {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .gallery-swiper-button-prev,
+  .gallery-swiper-button-next,
+  .documents-swiper-button-prev,
+  .documents-swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-swiper-button-prev svg,
+  .gallery-swiper-button-next svg,
+  .documents-swiper-button-prev svg,
+  .documents-swiper-button-next svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Enhanced shadow effects for depth */
+.swiper-flip .swiper-slide-active {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.1);
+}
+
+.swiper-flip .swiper-slide-next,
+.swiper-flip .swiper-slide-prev {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.05);
+}
+
+/* Added chevron arrow animation for scroll indicator */
+@keyframes drawDown {
+  0% {
+    stroke-dasharray: 0, 100;
+    opacity: 0.3;
+  }
+  50% {
+    stroke-dasharray: 50, 100;
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 100, 100;
+    opacity: 0.7;
+  }
+}
+
+.animate-draw-down {
+  stroke-dasharray: 100;
+  animation: drawDown 2s ease-in-out infinite;
+}
+
+/* Enhanced bounce animation for the chevron container */
+@keyframes bounceChevron {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-chevron {
+  animation: bounceChevron 2s infinite;
+}
+
+/* Added chevron draw animation for the stacked V arrows */
+@keyframes chevronDraw {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(5px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+.animate-chevron-draw {
+  animation: chevronDraw 2s ease-in-out infinite;
+}
