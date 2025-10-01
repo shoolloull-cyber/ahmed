@@ -170,8 +170,8 @@ export default function HomePage() {
       },
       hero: {
         title: "ARCADIA",
-        subtitle: "Tourism Catering Contracting",
-        description: "Professional Hajj and Umrah services with excellence and hospitality",
+        subtitle: "Contracting - Hotels - Catering",
+        description: "We take pride in providing high-quality contracting, hotel, and catering services that match your trust",
       },
       about: {
         title: "About Us",
@@ -249,8 +249,8 @@ export default function HomePage() {
       },
       hero: {
         title: "أركاديا",
-        subtitle: "مقاولات سياحة إعاشة",
-        description: "خدمات الحج والعمرة المهنية بالتميز والضيافة",
+        subtitle: "مقاولات - فنادق - إعاشة",
+        description: "نفتخر بتقديم خدمات المقاولات والفنادق والإعاشة بجودة عالية تليق بثقتكم",
       },
       about: {
         title: "من نحن",
